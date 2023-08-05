@@ -60,12 +60,23 @@ p{
     margin: 0;
     width: 100%;
 }
-@media(max-width: 440px){
+@media(max-width: 500px){
+    .game-container{
+        height: 60vh;
+    }
+    .btns{
+        margin:1rem auto;
+    }
     button{
         margin-top: 5px;
     }
     #up, #down{
         margin-left: 100%;
         margin-right: 100%;
+    }
+    
+    .messages{
+        text-align: center;
+        margin-top: 2rem;
     }
 }
