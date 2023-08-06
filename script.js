@@ -12,6 +12,7 @@ const spanTime = document.querySelector('#time')
 
 const spanRecord = document.querySelector('#record')
 const pResult = document.querySelector('#result')
+const btnReiniciar= document.querySelector('#reiniciar')
 
 let level = 0;
 let lives = 3;
@@ -37,13 +38,14 @@ const giftPosition = {
 let enemisPosition = []
 
 
-
-
 // cuando cargue el la pagina se ejecutara la funcion que se especifique
 window.addEventListener('load', setCanvasSize)
 
 // agregar elemento cada vez que la ventana se redimencione
 window.addEventListener('resize', setCanvasSize)
+
+// reiniciar el juego
+btnReiniciar.addEventListener('click',function(){location.reload()})
 
 function setCanvasSize() {
     // para generar medidas responsivas se puede hacer uso de las siguientes funciones
@@ -156,6 +158,7 @@ function movePlayer() {
 
     // en caso de colicionar con una bomba
     levelFail(playerX, playerY);
+    
 }
 
 
@@ -186,6 +189,16 @@ function gameWin() {
     console.log({ recordTime, playerTime });
 }
 
+function pausar(milliseconds) {
+    const start = new Date().getTime();
+    while (true) {
+      const current = new Date().getTime();
+      if (current - start >= milliseconds) {
+        break;
+      }
+    }
+  }
+
 // cuando se detectan coliciones con algun obstaculo
 function levelFail(playerX, playerY) {
     enemisPosition.forEach(bomba => {
@@ -196,6 +209,7 @@ function levelFail(playerX, playerY) {
             if (bomX == playerX && bomY == playerY) {
                 console.log('colicion contra bomba');
                 lives--;
+                pausar(3000)
                 playerPosition.x = undefined;
                 playerPosition.y = undefined;
                 startGame()

@@ -45,12 +45,18 @@ button{
 button:not(:last-child){
     margin-right: 1rem;
 }
+#reiniciar{
+    background-color: aliceblue;
+    font-weight: bold;
+    width: auto;
+}
 .messages{
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 80%;
     max-width: 460px;
+    justify-content: center;
 }
 .messages p{
     font-size: 2.3rem;
